@@ -235,30 +235,12 @@ def model(x_train,y_train,x_test):
 -take training data and separate it into testing and training
 -output a confusion matrix to measure accuracy of the model
 """
-'''
+
 def modelwithtest(x_train,y_train):
 #KNN
   #import new libraries
   from sklearn.metrics import confusion_matrix 
-  from sklearn.model_selection import train_test_split 
-  from sklearn.svm import SVC 
-  from sklearn.neighbors import KNeighborsClassifier
-
-  #create the model
-  neigh = KNeighborsClassifier(n_neighbors=5)
   
-  #split data into training and testing
-  x_train, x_test, y_train, y_test = train_test_split(x_train, y_train, test_size = 0.33)
-
-  #train the model and use it to predict labels
-  neigh.fit(x_train, y_train)
-  predictions = neigh.predict(x_test)
-
-  #create a confusion matrix
-  cm = confusion_matrix(y_test, predictions)
-
-  return predictions, cm, x_test
-'''
 def modelwithtest(x_train,y_train):
 
   #Import new libraries
@@ -270,33 +252,6 @@ def modelwithtest(x_train,y_train):
   print(696)
   #Split data
   x_train, x_test, y_train, y_test = train_test_split(x_train, y_train, test_size = 0.33)
-
-  #print(697)
-  ##scale
-  #scaler = StandardScaler()
-
-  #print(698)
-  ## Fit on training set only.
-  #scaler.fit(x_train)
-
-  #print(699)
-  ## Apply transform to both the training set and the test set.
-  #x_train = scaler.transform(x_train)
-  #x_test = scaler.transform(x_test)
-  #print(700)
-
-
-
-  ## Make an instance of the PCA Model
-  #pca = PCA(.95)  
-  #print(701)
-  ## Fit PCA modelon training set only
-  #pca.fit(x_train)
-  #print(702)
-  ## Apply PCA model on train and test
-  #x_train = pca.transform(x_train)
-  #x_test = pca.transform(x_test)
-  #print(703)
 
 
   # creat and apply random forest
@@ -359,7 +314,7 @@ print ('percentage', cm.trace()/cm.sum())
 print(5)
 
 
-'''
+
 #Step Six: Train the model on verified and use it to test unverified
 unverdata = np.array(unverifiedfeatureslabels[1])
 unverpadded = zeropad(unverdata, maxlength)[0]
@@ -410,7 +365,7 @@ x_testfeatures = lowpassandfeaturestest(x_test)
 testdata = np.array(x_testfeatures)
 print(10)
 
-#Step Eleven: Zeropad it to the maximum length of the training data
+Step Eleven: Zeropad it to the maximum length of the training data
 #     output the maximum and check it against the maximum of the training data
 #     if the testing had a larger maximum, rezeropad the training data to the longer length
 testpadded = zeropad(testdata,maxlength)[0]
